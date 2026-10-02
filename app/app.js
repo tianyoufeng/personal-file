@@ -1,10 +1,10 @@
 /* ============================================================
-   个人家庭档案登记 App v1.0.0 — 核心逻辑
+   个人档案 App v1.0.1 — 核心逻辑
    纯本地离线 · IndexedDB 存储 · 软删除 + 回收站 · 自动保存
    ============================================================ */
 'use strict';
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.0.1';
 
 /* 安卓 APK 内的原生桥（浏览器环境为 null，走网页下载） */
 const NATIVE = (function(){
@@ -328,7 +328,7 @@ function renderPersonListReal(){
       '<button class="icbtn" data-pmenu="'+p.id+'">'+I.dots+'</button>'+
     '</div>';
   }).join('');
-  return '<div class="topbar"><h1>家庭档案</h1>'+
+  return '<div class="topbar"><h1>个人档案</h1>'+
       '<button class="icbtn" data-go="#/bin" title="回收站">'+I.trash+'</button>'+
       '<button class="icbtn" data-go="#/settings" title="设置">'+I.dots+'</button></div>'+
     '<div class="searchbar">'+I.search+
@@ -614,7 +614,7 @@ async function renderSettings(){
         '<div class="srow"><div class="si">'+I.person+'</div>'+
           '<div class="sl">关于本应用<div class="sd">纯本地离线 · 不联网 · 不上传任何数据</div></div></div>'+
       '</div>'+
-      '<div class="ver">个人家庭档案登记 v'+APP_VERSION+'<br>数据仅存储在本机，卸载应用前请先导出备份</div>'+
+      '<div class="ver">个人档案 v'+APP_VERSION+'<br>数据仅存储在本机，卸载应用前请先导出备份</div>'+
     '</div>';
 }
 
@@ -672,7 +672,7 @@ async function exportBackup(){
   pack.meta.theme=S.theme; pack.meta.retention=S.retention; pack.meta.autoClean=S.autoClean;
   const json=JSON.stringify(pack,null,1);
   if(NATIVE){
-    const fname='家庭档案备份-'+new Date().toISOString().slice(0,10)+'.json';
+    const fname='个人档案备份-'+new Date().toISOString().slice(0,10)+'.json';
     let ok=false;
     try{ ok=NATIVE.saveFile(fname,'application/json',json); }catch(err){ ok=false; }
     if(!ok) toast('原生保存失败，请改用浏览器版本导出',true);
@@ -681,7 +681,7 @@ async function exportBackup(){
   const blob=new Blob([json],{type:'application/json'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='家庭档案备份-'+new Date().toISOString().slice(0,10)+'.json';
+  a.download='个人档案备份-'+new Date().toISOString().slice(0,10)+'.json';
   a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),5000);
   toast('备份已导出（'+fmtSize(blob.size)+'）');
 }

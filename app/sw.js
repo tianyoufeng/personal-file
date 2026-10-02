@@ -1,5 +1,5 @@
-/* 家庭档案 App Service Worker — 缓存全部本地资源，完全离线可用 */
-const CACHE = 'family-archive-v1.0.0';
+/* 个人档案 App Service Worker — 缓存全部本地资源，完全离线可用 */
+const CACHE = 'personal-archive-v1.0.1';
 const ASSETS = [
   './',
   './index.html',

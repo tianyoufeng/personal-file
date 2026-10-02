@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 
-    /* ---------- JS 桥：备份导出到本机「下载/家庭档案」 ---------- */
+    /* ---------- JS 桥：备份导出到本机「下载/个人档案」 ---------- */
 
     private void toastOnUiThread(final String msg) {
         runOnUiThread(new Runnable() {
@@ -290,7 +290,7 @@ public class MainActivity extends Activity {
                 ContentValues cv = new ContentValues();
                 cv.put(MediaStore.Downloads.DISPLAY_NAME, name);
                 cv.put(MediaStore.Downloads.MIME_TYPE, mime);
-                cv.put(MediaStore.Downloads.RELATIVE_PATH, "Download/家庭档案");
+                cv.put(MediaStore.Downloads.RELATIVE_PATH, "Download/个人档案");
                 cv.put(MediaStore.Downloads.IS_PENDING, 1);
                 Uri uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, cv);
                 if (uri == null) return false;
@@ -324,7 +324,7 @@ public class MainActivity extends Activity {
                 boolean ok = writeToDownloads(name, mime, content.getBytes(StandardCharsets.UTF_8));
                 if (ok) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        toastOnUiThread("备份已保存到 下载/家庭档案/" + name);
+                        toastOnUiThread("备份已保存到 下载/个人档案/" + name);
                     } else {
                         toastOnUiThread("备份已保存到应用数据目录");
                     }

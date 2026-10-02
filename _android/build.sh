@@ -1,5 +1,5 @@
 #!/bin/bash
-# 家庭档案 App v1.0.0 — APK 构建脚本（无 Gradle，五步手工链路）
+# 个人档案 App v1.0.1 — APK 构建脚本（无 Gradle，五步手工链路）
 set -e
 export PATH="/c/Windows/System32:/usr/bin:/bin:$PATH"
 
@@ -15,7 +15,7 @@ BUILD="$BASEW/work/familyarchive"
 KS="$BASEW/keys/familyarchive.keystore"
 KS_ALIAS="familyarchive"
 KS_PASS="family-archive-2026"
-OUT="$PROJ/dist/家庭档案-v1.0.0.apk"
+OUT="$PROJ/dist/个人档案-v1.0.1.apk"
 
 # 断言工具存在
 for t in "$BT/aapt2.exe" "$BT/d8.bat" "$BT/zipalign.exe" "$BT/apksigner.bat" \
@@ -50,7 +50,7 @@ fi
 "$BT/aapt2.exe" link -o "$BUILD/base.apk" -I "$PLATFORM" \
   --manifest "$AND/AndroidManifest.xml" -A "$BUILD/assets" --java "$BUILD/gen" \
   --min-sdk-version 24 --target-sdk-version 34 \
-  --version-code 1 --version-name "1.0.0" "$BUILD/res.zip"
+  --version-code 2 --version-name "1.0.1" "$BUILD/res.zip"
 
 # 4) javac
 "$JDK/javac.exe" -source 8 -target 8 -nowarn -encoding UTF-8 \

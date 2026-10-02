@@ -1,6 +1,6 @@
 {
-  "name": "个人家庭档案登记",
-  "short_name": "家庭档案",
+  "name": "个人档案",
+  "short_name": "个人档案",
   "description": "纯本地离线的个人与家庭成员档案登记应用，数据不联网不上传。",
   "start_url": "./index.html",
   "scope": "./",

@@ -2,7 +2,7 @@
 # APK 包内容逐字节核对：assets 与源文件一致、dex 在根目录、dex 头部合法
 import zipfile, zlib, sys
 
-APK = r"D:\Before_file\WorkBuddy_File\家庭档案-app\v1.0\dist\家庭档案-v1.0.0.apk"
+APK = r"D:\Before_file\WorkBuddy_File\家庭档案-app\v1.0\dist\个人档案-v1.0.1.apk"
 APP = r"D:\Before_file\WorkBuddy_File\家庭档案-app\v1.0\app"
 BUILD = r"C:\Users\q2764\.workbuddy\binaries\android-build\work\familyarchive"
 
@@ -44,7 +44,7 @@ else:
     adler = zlib.adler32(d[12:]) & 0xFFFFFFFF
     if struct.unpack("<I", d[8:12])[0] != adler: bad("dex adler32 mismatch")
     # 中文串按 UTF-8 字节查（正则会漏中文）
-    if "家庭档案".encode("utf-8") not in d: bad("dex missing app string")
+    if "个人档案".encode("utf-8") not in d: bad("dex missing app string")
     if b"saveFile" not in d: bad("dex missing saveFile")
     print("dex header + strings OK")
 
